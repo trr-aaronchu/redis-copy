@@ -1,0 +1,13 @@
+steps:
+  - name: ":docker: Build Image"
+    agents:
+      queue: docker-builder
+    plugins:
+      docker-login#c8dc8e1:
+        server: gcr.io
+        username: ${GCR_USER}
+        password: ${GCR_PASSWORD}
+      docker-compose#v1.8.2:
+        build: app
+        image-name: ${BUILDKITE_COMMIT}
+        image-repository: gcr.io/handshake-build/redis-copy
