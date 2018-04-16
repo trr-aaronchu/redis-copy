@@ -88,7 +88,7 @@ module RedisCopy
 
     def redis_from(connection_string)
       require 'uri'
-      connection_string = "redis://#{connection_string}" unless connection_string.start_with?("redis://")
+      connection_string = "redis://#{connection_string}" unless connection_string.start_with?("redis://", "rediss://")
       uri = URI(connection_string)
       ret = {uri: uri}
 
